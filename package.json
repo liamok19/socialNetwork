@@ -21,6 +21,7 @@
   "homepage": "https://github.com/liamok19/socialNetwork#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "mongoose": "^6.2.10"
+    "mongoose": "^6.2.10",
+    "validator": "^13.7.0"
   }
 }
