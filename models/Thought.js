@@ -7,7 +7,7 @@ const thoughtSchema = new Schema({
     maxlength: 280,
     minlength: 1,
   },
-  reactions: [ReactionSchema],
+  reactions: [reactionSchema],
   createdAt: {
     type: Date,
     default: Date.now,
