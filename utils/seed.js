@@ -32,10 +32,10 @@ connection.once('open', async () => {
             });
         }
         
-        // Add students to the collection and await the results
-        await Student.collection.insertMany(students);
+        // Add users to the collection and await the results
+        await User.collection.insertMany(users);
         
-        // Add courses to the collection and await the results
+        // Add thoughts to the collection and await the results
         await Thought.collection.insertOne({
             thoughtName: 'so happy',
             inPerson: false,
@@ -43,7 +43,7 @@ connection.once('open', async () => {
         });
         
         // Log out the seed data to indicate what should appear in the database
-        console.table(students);
+        console.table(users);
         console.info('Seeding complete! 🌱');
         process.exit(0);
         });
