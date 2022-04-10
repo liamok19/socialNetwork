@@ -2,27 +2,27 @@ const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 // Aggregate function to get the number of users overall
-const friendCount = async () =>
-    User.aggregate()
-        .count('userCount')
-        .then((numberOfUsers) => numberOfUsers);
+// const friendCount = async () =>
+//     User.aggregate()
+//         .count('friendCount')
+//         .then((numberOfUsers) => numberOfUsers);
 
 
 // Aggregate function for getting the overall grade using $avg
-const reaction = async (userId) =>
-    User.aggregate([
-        // only include the given student by using $match
-        { $match: { _id: ObjectId(userId) } },
-    {
-            $unwind: '$reactions',
-    },
-        {
-        $group: {
-            _id: ObjectId(userId),
-            overallReaction: { $avg: '$reactions.score' },
-        },
-        },
-    ]);
+// const reaction = async (userId) =>
+//     User.aggregate([
+//         // only include the given student by using $match
+//         { $match: { _id: ObjectId(userId) } },
+//     {
+//             $unwind: '$reactions',
+//     },
+//         {
+//         $group: {
+//             _id: ObjectId(userId),
+//             overallReaction: { $avg: '$reactions.score' },
+//         },
+//         },
+//     ]);
 
     
 module.exports = {
@@ -30,10 +30,10 @@ module.exports = {
     getUser(req, res) {
         // console.log("🚀 ~ file: userController.js ~ line 31 ~ getUser ~ getUser", getUser)
         User.find()
-        .then(async (users) => {
+        .then( (users) => {
             const userObj = {
             users,
-            friendCount: await friendCount(),
+            // friendCount: await friendCount(),
             };
             return res.json(userObj);
         })

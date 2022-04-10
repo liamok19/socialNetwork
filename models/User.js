@@ -5,61 +5,61 @@ const { isEmail } = require("validator");
 const Thought = require("./Thought");
 
 const userSchema = new Schema(
-    {
+  {
     // userId: {
     //   type: Schema.Types.ObjectId,
     //   default: () => new Types.ObjectId(),
     // },
     userName: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
 
-        maxlength: 50,
-        minlength: 4,
-        default: "Unnamed user",
+      maxlength: 50,
+      minlength: 4,
+      default: "Unnamed user",
     },
     email: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        validate: {
-            validator: (v) => isEmail(v),
-            message: "Invalid Email",
-        },
-        thoughts: [
-            {
-            type: Schema.Types.ObjectId,
-            ref: 'thought',
-        }
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      validate: {
+        validator: (v) => isEmail(v),
+        message: "Invalid Email",
+      },
+    },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "thought",
+      },
     ],
-        friends: [
-            {
-                default: [],
-                type: Schema.Types.ObjectId,
-                ref: 'user',
-            },
-        ],
-        },
-    },
-    {
+    friends: [
+      {
+        default: [],
+        type: Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
+  },
+  {
     toJSON: {
-        virtuals: true,
-        getters:true,
+      virtuals: true,
+      getters: true,
     },
-        id: false,
-    }
+    id: false,
+  }
 );
 
 userSchema.virtual("friendCount").get(function () {
-    console.log(this);
-    if(this.friends){
-        return this.friends.length;
-    }else{
-        return 0
-    }
+  console.log(this);
+  if (this.friends) {
+    return this.friends.length;
+  } else {
+    return 0;
+  }
 });
 
 const User = model("user", userSchema);
@@ -72,4 +72,3 @@ module.exports = User;
 //     email: 'alceee'
 // })
 // alice.save();
-
