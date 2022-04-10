@@ -7,7 +7,7 @@ module.exports = {
         .then((thoughts) => res.json(thoughts))
         .catch((err) => res.status(500).json(err))
     },
-
+    //Get a single thought listed out in the api call
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.thoughtId })
         .select('-__v')
@@ -18,6 +18,7 @@ module.exports = {
         )
         .catch((err) => res.status(500).json(err));
     },
+    //Creating a thought 
     createThought(req, res) {
         Thought.create(req.body)
             .then((thought) => res.json(thought))
@@ -26,6 +27,7 @@ module.exports = {
                 return res.status(500).json(err);
             });
         },
+        //deleting a thought
     deleteThought(req, res) {
         Thought.findOneAndDelete({ _id: req.params.thoughtId })
             .then((thought) =>
@@ -36,7 +38,7 @@ module.exports = {
             .then(() => res.json({ message: 'thought and users deleted!' }))
             .catch((err) => res.status(500).json(err));
         },
-
+        //updating an existing though. Pulling from the thoughtId. validators required. 
         updateThought(req, res) {
             Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
