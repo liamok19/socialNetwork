@@ -2,7 +2,7 @@ const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 // Aggregate function to get the number of users overall
-const headCount = async () =>
+const friendCount = async () =>
     User.aggregate()
         .count('userCount')
         .then((numberOfUsers) => numberOfUsers);
@@ -28,11 +28,12 @@ const reaction = async (userId) =>
 module.exports = {
     // Get all students
     getUser(req, res) {
+        // console.log("🚀 ~ file: userController.js ~ line 31 ~ getUser ~ getUser", getUser)
         User.find()
         .then(async (users) => {
             const userObj = {
             users,
-            headCount: await headCount(),
+            friendCount: await friendCount(),
             };
             return res.json(userObj);
         })
@@ -41,6 +42,7 @@ module.exports = {
             return res.status(500).json(err);
         });
     },
+    
   // Get a single student
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })

@@ -29,14 +29,17 @@ const userSchema = new Schema(
             validator: (v) => isEmail(v),
             message: "Invalid Email",
         },
-        thoughts: [{
+        thoughts: [
+            {
             type: Schema.Types.ObjectId,
-            ref: Thought,
-        }],
+            ref: 'thought',
+        }
+    ],
         friends: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "user",
+            {
+                default: [],
+                type: Schema.Types.ObjectId,
+                ref: 'user',
             },
         ],
         },
@@ -44,13 +47,19 @@ const userSchema = new Schema(
     {
     toJSON: {
         virtuals: true,
+        getters:true,
     },
         id: false,
     }
 );
 
 userSchema.virtual("friendCount").get(function () {
-    return this.friends.length;
+    console.log(this);
+    if(this.friends){
+        return this.friends.length;
+    }else{
+        return 0
+    }
 });
 
 const User = model("user", userSchema);

@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const reactionSchema = require('./Reaction');
+var dayjs = require('dayjs')
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -11,6 +12,7 @@ const thoughtSchema = new Schema({
     createdAt: {
       type: Date,
       default: Date.now,
+      // dayjs().format()
     },
     userName: {
       type: String,

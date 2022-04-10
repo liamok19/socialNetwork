@@ -19,15 +19,15 @@ connection.once('open', async () => {
         // Loop 20 times -- add students to the students array
         for (let i = 0; i < 20; i++) {
             // Get some random reaction objects using a helper function that we imported from ./data
-            const reactions = getRandomReactions(20);
+            const reactions = getRandomReactions(4);
         
             const fullName = getRandomName();
             const first = fullName.split(' ')[0];
-            const last = fullName.split(' ')[1];
+            // const last = fullName.split(' ')[1];
                 
             users.push({
             first,
-            last,
+            // last,
             reactions,
             });
         }
