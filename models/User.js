@@ -42,9 +42,9 @@ const userSchema = new Schema(
         },
     },
     {
-        toJSON: {
+    toJSON: {
         virtuals: true,
-        },
+    },
         id: false,
     }
 );
@@ -58,9 +58,9 @@ const User = model("user", userSchema);
 module.exports = User;
 
 //testing for model
-const alice =  new User({
-    userName: 'alice',
-    email: 'alceee'
-})
-alice.save();
+// const alice =  new User({
+//     userName: 'alice',
+//     email: 'alceee'
+// })
+// alice.save();
 

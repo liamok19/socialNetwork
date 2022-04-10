@@ -6,4 +6,8 @@ const Reaction = require('./Reaction');
 // console.log(Thought, 'thought obj');
 // console.log(Reaction, 'reaction obj');
 
-module.exports = { User, Thought, Reaction};
+module.exports = { 
+    User, 
+    Thought, 
+    Reaction
+};
