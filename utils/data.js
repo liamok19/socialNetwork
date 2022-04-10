@@ -4,13 +4,32 @@ const names = [
     'Bonny', 
     'Mickey', 
     'Ariel',
+    'Aaran',
+    'Aaren',
+    'Aarez',
+    'Aarman',
+    'Aaron',
+    'Aaron-James',
+    'Aarron',
+    'Aaryan',
+    'Aaryn',
+    'Aayan',
+    'Aazaan',
+    'Abaan',
+    'Abbas',
+    'Abdallah',
+    'Abdalroof',
+    'Abdihakim',
+    'Abdirahman',
+    'Abdisalam',
+    'Abdul',
 ];
 
-const appDescriptions = [
-    'Decision Tracker',
-    'Find My Phone',
-    'Learn Piano',
-    'Starbase Defender',
+const reactionDescriptions = [
+    'Happy',
+    'Sad',
+    'Angry',
+    'BritneyToxic',
 ];
 
   // Get a random item given an array
@@ -21,11 +40,11 @@ const appDescriptions = [
     `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
   
   // Function to generate random assignments that we can add to student object.
-  const getRandomAssignments = (int) => {
+  const getRandomReactions = (int) => {
     const results = [];
     for (let i = 0; i < int; i++) {
       results.push({
-        assignmentName: getRandomArrItem(appDescriptions),
+        reactionName: getRandomArrItem(reactionDescriptions),
         score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
       });
     }
@@ -33,5 +52,5 @@ const appDescriptions = [
   };
   
   // Export the functions for use in seed.js
-  module.exports = { getRandomName, getRandomAssignments };
+  module.exports = { getRandomName, getRandomReactions };
   
