@@ -1,28 +1,19 @@
+const dayjs = require('dayjs');
+
+const formatDate = function (date){
+  // console.log("🚀 ~ file: data.js ~ line 4 ~ formatDate ~ date", date)
+  
+  return dayjs(date).format('MMM DD YYYY [at] hh:mm a');
+}
+formatDate()
+// console.log(formatDate)
+
+
 const names = [
     'Britney',
     'Harry', 
     'Bonny', 
     'Mickey', 
-    'Ariel',
-    'Aaran',
-    'Aaren',
-    'Aarez',
-    'Aarman',
-    'Aaron',
-    'Aaron-James',
-    'Aarron',
-    'Aaryan',
-    'Aaryn',
-    'Aayan',
-    'Aazaan',
-    'Abaan',
-    'Abbas',
-    'Abdallah',
-    'Abdalroof',
-    'Abdihakim',
-    'Abdirahman',
-    'Abdisalam',
-    'Abdul',
 ];
 
 const reactionDescriptions = [
@@ -52,5 +43,5 @@ const reactionDescriptions = [
   };
   
   // Export the functions for use in seed.js
-  module.exports = { getRandomName, getRandomReactions };
+  module.exports = { formatDate, getRandomName, getRandomReactions };
   

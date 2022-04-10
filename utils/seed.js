@@ -1,5 +1,6 @@
 const connection = require('../config/connection');
 const { Thought, User } = require('../models');
+const { post } = require('../models/Reaction');
 const { getRandomName, getRandomReactions } = require('./data');
 
 connection.on('error', (err) => err);
@@ -26,9 +27,11 @@ connection.once('open', async () => {
             // const last = fullName.split(' ')[1];
                 
             users.push({
-            first,
+            userName,
+            email,
+            // posts:post,
+            friends:[friend],
             // last,
-            reactions,
             });
         }
         

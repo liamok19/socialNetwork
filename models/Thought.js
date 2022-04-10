@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
+const { formatDate } = require("../utils/data");
 const reactionSchema = require('./Reaction');
-var dayjs = require('dayjs')
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -12,7 +12,8 @@ const thoughtSchema = new Schema({
     createdAt: {
       type: Date,
       default: Date.now,
-      // dayjs().format()
+      get: (createdAtVal) => formatDate(createdAtVal),
+      
     },
     userName: {
       type: String,
@@ -20,6 +21,7 @@ const thoughtSchema = new Schema({
     },
     reactions: [reactionSchema],
   },
+    // console.log("🚀 ~ file: Thought.js ~ line 24 ~ createdAt", createdAt),
   {
     toJSON: {
       virtuals: true,
