@@ -1,8 +1,9 @@
 const { Schema, model } = require("mongoose");
 const { formatDate } = require("../utils/data");
-const reactionSchema = require('./Reaction');
+const Reaction = require("./Reaction");
 
-const thoughtSchema = new Schema({
+const thoughtSchema = new Schema(
+  {
     thoughtText: {
       type: String,
       required: true,
@@ -13,28 +14,25 @@ const thoughtSchema = new Schema({
       type: Date,
       default: Date.now,
       get: (createdAtVal) => formatDate(createdAtVal),
-      
     },
     userName: {
       type: String,
       required: true,
     },
-    reactions: [reactionSchema],
+    reactions: [{ type: Schema.Types.ObjectId, ref: "Thoughts" }],
   },
-    // console.log("🚀 ~ file: Thought.js ~ line 24 ~ createdAt", createdAt),
+  // console.log("🚀 ~ file: Thought.js ~ line 24 ~ createdAt", createdAt),
   {
     toJSON: {
       virtuals: true,
+      getters:false,
     },
     id: false,
   }
 );
 
-thoughtSchema
-.virtual('reactionCount')
-.get(function () {
-  return this.length.reactions;
-  
+thoughtSchema.virtual("reactionCount").get(function () {
+  return this.reactions.length;
 });
 const Thought = model("thought", thoughtSchema);
 
