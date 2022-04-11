@@ -5,17 +5,10 @@ module.exports = {
   // Get all students
   getUser(req, res) {
     // console.log("🚀 ~ file: userController.js ~ line 31 ~ getUser ~ getUser", getUser)
-    User.find()
-      //   .then((users) => {
-      // const userObj = {
-      //   users,
-      //   // friendCount: await friendCount(),
-      // };
-      // return res.json(userObj);
-
+    User.find() //Find all users in this model
       .then((user) => {
         res.json({
-          user,
+          user, //returning field values associated to this model.
         });
       })
       .catch((err) => {
@@ -26,7 +19,7 @@ module.exports = {
 
   // Get a single student
   getSingleUser(req, res) {
-    User.findOne({ _id: req.params.userId })
+    User.findOne({ _id: req.params.userId }) //finding a single user via the user_id
       .select("-__v")
       .then(async (user) =>
         !user
@@ -79,13 +72,6 @@ module.exports = {
               { new: true }
             )
       )
-      //   .then((thought) =>
-      //     !thought
-      //       ? res.status(404).json({
-      //           message: "User deleted, but no thoughts found",
-      //         })
-      //       : res.json({ message: "User successfully deleted" })
-      //   )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
@@ -113,14 +99,16 @@ module.exports = {
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { friends: req.params.friendsId } },
+      { $pull: { friends: req.params.friends} },
       { new: true }
-    ).then((user) => {
-      if (!user)
-        res.status(404).json({ message: "No user found with that ID :(" });
-      console.log(user);
-      res.json(user);
-    });
+    )
+      .then((user) => {
+        if (!user)
+          res.status(404).json({ message: "No user found with that ID :(" });
+        console.log(user);
+        res.json(user);
+      })
+      .catch((err) => res.status(400).json(err));
   },
 };
 

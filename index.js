@@ -1,16 +1,12 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const db = require('./config/connection');
 const routes = require('./routes');
 
-// const cwd = process.cwd();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
-// const activity = cwd.includes('socialNetwork')
-//     ? cwd.split('/socialNetwork/')[1]
-//     : cwd;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,4 +17,3 @@ db.once('open', () => {
         console.log(`API server running on port ${PORT}!`);
     });
 });
-// for ${activity}
