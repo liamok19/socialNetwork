@@ -1,5 +1,5 @@
 const { use } = require("express/lib/application");
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types  } = require("mongoose");
 // import { isEmail } from 'validator';
 const { isEmail } = require("validator");
 const Thought = require("./Thought");

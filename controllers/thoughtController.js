@@ -77,14 +77,12 @@ createReaction(req, res) {
         console.log(err);
         return res.status(500).json(err);
       });
-  },
-
-
+    },
   // Remove assignment from a student
   removeReaction(req, res) {
     Reaction.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { reaction: { reactionId: req.params.reactionId } } },
+      { _id: req.params.reactionId  },
+      { $pull: { reaction: req.params.reactionId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
