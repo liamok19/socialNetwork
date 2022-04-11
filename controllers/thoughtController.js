@@ -80,20 +80,17 @@ createReaction(req, res) {
     },
   // Remove assignment from a student
   removeReaction(req, res) {
-    Reaction.findOneAndDelete({ _id: req.params.reactionId  })
+    Reaction.findOneAndUpdate({ _id: req.params.reactionId  })
       // ,
       // { $pull: { reaction: req.params.reactionId } },
       // { runValidators: true, new: true }
     
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No user found with that ID :(" })
-          :  Reaction.findOneAndUpdate(
-            { Reaction: req.params.reactionId },
-            { $pull: { Reaction: req.params.reactionId } },
-            { new: true }
-          )
-      )
+      .then((user) => {
+        if (!user)
+          res.status(404).json({ message: "No user found with that ID :(" });
+        console.log(user);
+        res.json(user);
+      })
       .catch((err) => res.status(500).json(err));
   },
 };

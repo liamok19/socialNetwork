@@ -1,8 +1,6 @@
 # socialNetwork
 [![License: MIT](https://img.shields.io/apm/l/vim-mode?color=orange&style=for-the-badge.svg)](https://opensource.org/licenses/MIT)
 
-## Walkthrough Link
-
 
 ## Table of contents
 - [Description](#description)
@@ -33,10 +31,6 @@ SO THAT my website can handle large amounts of unstructured data
 |<del> WHEN I test API POST, PUT, and DELETE routes in Insomnia </del> | <del> THEN I am able to successfully create, update, and delete users and thoughts in my database - COMPLETED </del>|
 | <del> WHEN I test API POST and DELETE routes in Insomnia </del> |<del> THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list - COMPLETED </del>|
 
-
-
-## Final Look
-# Usage
 
 
 ## Model
