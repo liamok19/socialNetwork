@@ -28,10 +28,10 @@ SO THAT my website can handle large amounts of unstructured data
 ```
 | When | Then | 
 | ------------- |:-------------:| 
-| WHEN I enter the command to invoke the application | THEN my server is started and the Mongoose models are synced to the MongoDB database - COMPLETED  | 
-| WHEN I open API GET routes in Insomnia for users and thoughts | THEN the data for each of these routes is displayed in a formatted JSON - COMPLETED  |
-|WHEN I test API POST, PUT, and DELETE routes in Insomnia |THEN I am able to successfully create, update, and delete users and thoughts in my database - COMPLETED|
-| WHEN I test API POST and DELETE routes in Insomnia |THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list |
+|<del> WHEN I enter the command to invoke the application  </del> |<del> THEN my server is started and the Mongoose models are synced to the MongoDB database - COMPLETED  </del>| 
+|<del> WHEN I open API GET routes in Insomnia for users and thoughts</del> |<del> THEN the data for each of these routes is displayed in a formatted JSON - COMPLETED </del> |
+|<del> WHEN I test API POST, PUT, and DELETE routes in Insomnia </del> | <del> THEN I am able to successfully create, update, and delete users and thoughts in my database - COMPLETED </del>|
+| <del> WHEN I test API POST and DELETE routes in Insomnia </del> |<del> THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list - COMPLETED </del>|
 
 
 
